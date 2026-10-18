@@ -1,0 +1,17 @@
+{
+  "name": "inkrelay",
+  "owner": { "name": "InkRelay", "url": "https://inkrelay.app" },
+  "metadata": {
+    "description": "Official InkRelay plugins: add cloud printing (PDFs, ZPL labels, ESC/POS receipts) to any app with AI"
+  },
+  "plugins": [
+    {
+      "name": "inkrelay",
+      "source": "./plugins/inkrelay",
+      "description": "Print from code to any printer: the InkRelay MCP server, the inkrelay-printing skill and the inkrelay-integrator agent",
+      "version": "0.1.0",
+      "category": "development",
+      "homepage": "https://docs.inkrelay.app/ai"
+    }
+  ]
+}

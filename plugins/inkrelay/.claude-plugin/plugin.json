@@ -1,0 +1,10 @@
+{
+  "name": "inkrelay",
+  "version": "0.1.0",
+  "description": "Add cloud printing to any app: print PDFs, ZPL labels and ESC/POS receipts to printers on Windows, macOS and Linux through the InkRelay API. Includes the InkRelay MCP server, the docs search server, the inkrelay-printing skill and the inkrelay-integrator agent.",
+  "author": { "name": "InkRelay", "url": "https://inkrelay.app" },
+  "homepage": "https://docs.inkrelay.app/ai",
+  "repository": "https://github.com/GauravBR/inkrelay-ai",
+  "license": "MIT",
+  "keywords": ["printing", "cloud-printing", "remote-printing", "pdf", "zpl", "escpos", "labels", "receipts", "mcp"]
+}

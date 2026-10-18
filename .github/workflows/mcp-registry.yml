@@ -1,0 +1,21 @@
+# Publishes mcp/server.json to the official MCP Registry (registry.modelcontextprotocol.io) as
+# io.github.GauravBR/inkrelay. Run it by hand once the matching @inkrelay/mcp version is live on
+# npm (the release workflow only stages it; the registry checks mcpName in the published package).
+name: mcp-registry
+on: { workflow_dispatch: {} }
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions: { id-token: write, contents: read }
+    defaults: { run: { working-directory: mcp } }
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Package version is on npm
+        run: |
+          v=$(jq -r .version package.json)
+          [ "$(jq -r .version server.json)" = "$v" ] || { echo "::error::server.json version differs from package.json"; exit 1; }
+          npm view "@inkrelay/mcp@$v" version >/dev/null || { echo "::error::@inkrelay/mcp@$v is not on npm yet"; exit 1; }
+      - name: Install mcp-publisher 1.8.1
+        run: curl -fsSL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+      - run: ./mcp-publisher login github-oidc
+      - run: ./mcp-publisher publish

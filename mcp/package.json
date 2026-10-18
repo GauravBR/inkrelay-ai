@@ -1,0 +1,56 @@
+{
+  "name": "@inkrelay/mcp",
+  "version": "0.1.0",
+  "mcpName": "io.github.GauravBR/inkrelay",
+  "description": "MCP server for the InkRelay printing API: list printers, print PDFs, ZPL labels and ESC/POS receipts, and follow print jobs",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "inkrelay",
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "printing",
+    "cloud-printing",
+    "remote-printing",
+    "pdf",
+    "zpl",
+    "escpos",
+    "ai-agents"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "inkrelay-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "server.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:GauravBR/inkrelay-ai",
+  "homepage": "https://docs.inkrelay.app/ai",
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --clean",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@inkrelay/sdk": "0.3.0",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "22",
+    "tsup": "9.0.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.4"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.GauravBR/inkrelay",
+  "title": "InkRelay",
+  "description": "Print PDFs, ZPL labels and ESC/POS receipts on your printers and follow print jobs via InkRelay",
+  "websiteUrl": "https://docs.inkrelay.app/ai",
+  "repository": {
+    "url": "https://github.com/GauravBR/inkrelay-ai",
+    "source": "github",
+    "subfolder": "mcp"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@inkrelay/mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "INKRELAY_API_KEY",
+          "description": "InkRelay API key from app.inkrelay.app/api-keys. ir_test_ keys print only to free virtual printers.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "INKRELAY_FILE_ROOT",
+          "description": "Folder that filePath arguments must stay inside. Defaults to the working directory.",
+          "isRequired": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

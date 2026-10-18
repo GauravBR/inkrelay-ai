@@ -1,0 +1,27 @@
+name: ci
+on: { push: {}, pull_request: {} }
+permissions: { contents: read }
+jobs:
+  mcp:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: mcp } }
+    steps:
+      - uses: actions/checkout@v4
+      # pnpm version comes from the packageManager field in mcp/package.json.
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
+        with: { package_json_file: mcp/package.json }
+      - { uses: actions/setup-node@v4, with: { node-version: 22, cache: pnpm, cache-dependency-path: mcp/pnpm-lock.yaml } }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint && pnpm typecheck && pnpm test && pnpm build
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Manifests are valid JSON and the skill has frontmatter
+        run: |
+          for f in .claude-plugin/marketplace.json plugins/inkrelay/.claude-plugin/plugin.json plugins/inkrelay/.mcp.json; do jq empty "$f"; done
+          [ "$(head -1 plugins/inkrelay/skills/inkrelay-printing/SKILL.md)" = "---" ]
+          grep -q '^name: inkrelay-printing$' plugins/inkrelay/skills/inkrelay-printing/SKILL.md
+          v=$(jq -r .version mcp/package.json)
+          [ "$(jq -r .version mcp/server.json)" = "$v" ] && [ "$(jq -r '.packages[0].version' mcp/server.json)" = "$v" ]
+          [ "$(jq -r .mcpName mcp/package.json)" = "$(jq -r .name mcp/server.json)" ]

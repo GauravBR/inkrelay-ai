@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "inkrelay": {
+      "command": "npx",
+      "args": ["-y", "@inkrelay/mcp"],
+      "env": { "INKRELAY_API_KEY": "${INKRELAY_API_KEY}" }
+    },
+    "inkrelay-docs": {
+      "type": "http",
+      "url": "https://docs.inkrelay.app/mcp"
+    }
+  }
+}

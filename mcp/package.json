@@ -32,7 +32,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "github:GauravBR/inkrelay-ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GauravBR/inkrelay-ai.git",
+    "directory": "mcp"
+  },
   "homepage": "https://docs.inkrelay.app/ai",
   "packageManager": "pnpm@9.15.9",
   "scripts": {

@@ -6,7 +6,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 const MAX_BYTES = 25 * 1024 * 1024;
 const SOURCE = "inkrelay-mcp";
 

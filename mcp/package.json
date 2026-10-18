@@ -1,6 +1,6 @@
 {
   "name": "@inkrelay/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "mcpName": "io.github.GauravBR/inkrelay",
   "description": "MCP server for the InkRelay printing API: list printers, print PDFs, ZPL labels and ESC/POS receipts, and follow print jobs",
   "type": "module",
